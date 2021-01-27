@@ -7,14 +7,9 @@ from flask_ask import Ask, statement
 app = Flask(__name__)
 ask = Ask(app, '/')
 
-@ask.intent('StandUp')
-def stand_up():
-    speech_text = 'Standing up'
-    return statement(speech_text).simple_card('My Robot', speech_text)
-
-@ask.intent('LayDown')
-def law_down():
-    speech_text = 'Laying down'
+@ask.intent('Dolphins')
+def dolphin_fact():
+    speech_text = 'The last ever dolphin message was "So long and thanks for all the fish"'
     return statement(speech_text).simple_card('My Robot', speech_text)
 
 if __name__ == '__main__':
