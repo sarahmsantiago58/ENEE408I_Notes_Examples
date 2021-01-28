@@ -1,6 +1,6 @@
 # Set up Jetson Xavier NX without a Monitor on a Mac
 Here's a [link](https://desertbot.io/blog/jetson-xavier-nx-headless-wifi-setup) that helps with setting up the Jetson Xavier NX without a monitor.
-Make sure to connect to WiFi in when configuring the settings: "Step 10. Fill in the config info -> Network configuration" in the [link](https://desertbot.io/blog/jetson-xavier-nx-headless-wifi-setup). 
+Make sure to connect to WiFi when configuring the settings: "Step 10. Fill in the config info -> Network configuration" in the [link](https://desertbot.io/blog/jetson-xavier-nx-headless-wifi-setup). 
 This will give a good way to access the Jetson Xavier NX filesystem through terminal however it's not very user friendly when it comes to writing code. 
 Therefore, if you want to view the GUI you need to install x11vnc.
 
