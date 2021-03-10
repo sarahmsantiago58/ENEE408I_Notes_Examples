@@ -1,5 +1,5 @@
 # Intro
-The OpenCV shipped with the Xavier NX is version 4.1.1 (current version is 4.5.1) and does not include OpenCV contrib. Installing OpenCV contrib from PyPi can remove gstreamer support causing the raspberry pi camera to not work (also at the time of writing it installs a broken version of NumPy that causes `import numpy` to crash).
+The OpenCV shipped with the Xavier NX is version 4.1.1 (current version is 4.5.1) and does not include OpenCV contrib (which contains some popular facial recognition algorithms). Installing OpenCV contrib from PyPi can remove gstreamer support causing the raspberry pi camera to not work (also at the time of writing it installs a broken version of NumPy that causes `import numpy` to crash).
 
 This note shows how to build OpenCV 4.5.1 and contrib from source, with gstreamer and CUDA support for the Xavier NX.
 
