@@ -30,9 +30,10 @@ cd opencv-build
 sudo make -j6 install
 ```
 
-# Uninstall
+# (Do not do this part, for documentation only) Uninstalling OpenCV 4.5.1 installed from source
 
-To uninstall, and go back to the version of OpenCV shipped with the Xavier NX, `cd` into the build directory (probably ~/opencv/opencv-build) and run `sudo make uninstall`
+To uninstall, and go back to the version of OpenCV shipped with the Xavier NX, `cd` into the build directory (probably ~/opencv/opencv-build) and run `sudo make uninstall`. This will revert the Jetson to using the OpenCV 4.1.1 installed with Jetback (and without opencv_contrib).
+
 
 # Sources
 https://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html
