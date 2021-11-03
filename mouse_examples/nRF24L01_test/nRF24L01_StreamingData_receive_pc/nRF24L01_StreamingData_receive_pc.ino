@@ -133,7 +133,7 @@ void loop() {
     Serial.println(F(" failures detected"));
 
     // to make this example readable in the serial monitor
-    delay(1000);  // slow transmissions down by 1 second
+    delay(100);  // slow transmissions down by 1 second
 
   } else {
     // This device is a RX node
