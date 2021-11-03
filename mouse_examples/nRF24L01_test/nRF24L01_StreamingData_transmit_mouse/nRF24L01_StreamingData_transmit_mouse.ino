@@ -47,12 +47,20 @@ void setup() {
     // some boards need to wait to ensure access to serial over USB
   }
 
-  //SPI.begin();
-  //SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE0));
+  Serial.println("Starting SPI");
+
+  SPI.begin();
+  SPI.beginTransaction(SPISettings(10000000, MSBFIRST, SPI_MODE0));
+
+  while(!radio.isChipConnected()) {
+    Serial.println(F("Can't talk to radio via SPI"));
+    radio.powerDown();
+    radio.powerUp();
+    delay(200);
+  }
 
   // initialize the transceiver on the SPI bus
-  //if (!radio.begin(&SPI)) {
-  while (!radio.begin()) {
+  if (!radio.begin(&SPI)) {
     Serial.println(F("radio hardware is not responding!!"));
     while(1) {} // hold in infinite loop
   }
