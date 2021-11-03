@@ -47,10 +47,15 @@ void setup() {
     // some boards need to wait to ensure access to serial over USB
   }
 
+  //SPI.begin();
+  //SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE0));
+
   // initialize the transceiver on the SPI bus
-  if (!radio.begin()) {
+  //if (!radio.begin(&SPI)) {
+  while (!radio.begin()) {
     Serial.println(F("radio hardware is not responding!!"));
-    while (1) {} // hold in infinite loop
+    delay(200);
+    //while(1) {} // hold in infinite loop
   }
 
   // print example's introductory prompt
@@ -72,7 +77,7 @@ void setup() {
   // Set the PA Level low to try preventing power supply related problems
   // because these examples are likely run with nodes in close proximity to
   // each other.
-  radio.setPALevel(RF24_PA_LOW);  // RF24_PA_MAX is default.
+  radio.setPALevel(RF24_PA_MAX);  // RF24_PA_MAX is default.
 
   // save on transmission time by setting the radio to only transmit the
   // number of bytes we need to transmit
@@ -92,7 +97,7 @@ void setup() {
   }
 
   // For debugging info
-  // printf_begin();             // needed only once for printing details
+  //printf_begin();             // needed only once for printing details
   // radio.printDetails();       // (smaller) function that prints raw register values
   // radio.printPrettyDetails(); // (larger) function that prints human readable data
 
@@ -132,7 +137,7 @@ void loop() {
     Serial.println(F(" failures detected"));
 
     // to make this example readable in the serial monitor
-    delay(1000);  // slow transmissions down by 1 second
+    delay(100);  // slow transmissions down by 1 second
 
   } else {
     // This device is a RX node
