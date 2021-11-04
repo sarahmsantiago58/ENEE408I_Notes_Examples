@@ -5,7 +5,11 @@
 #include <SPI.h>
 #include "RF24.h"
 
-RF24 radio(0, A4); // D0 = CE, A4 = CSN
+const unsigned int ADC_1_CS = A3;
+const unsigned int ADC_2_CS = A2;
+
+RF24 radio(0, A4, 1000000); // D0 = CE, A4 = CSN, spi_speed = 1MHz (default 10 Mhz is too fast)
+// Use 1 Mhz, 10 MHz is too fast (based on oscilloscope)
 
 uint8_t mouse_address[] = "mouseN";
 uint8_t jetson_address[] = "jetNN";
@@ -22,9 +26,17 @@ packet_t send_packet = {0.0, 0, 0};
 packet_t receive_packet = {0.0, 0, 0};
 
 void setup() {
+  pinMode(ADC_1_CS, OUTPUT);
+  pinMode(ADC_2_CS, OUTPUT);
+
+  digitalWrite(ADC_1_CS, HIGH); // Without this the ADC's write
+  digitalWrite(ADC_2_CS, HIGH); // to the SPI bus while the nRF24 is!!!!
+
   Serial.begin(115200);
   while (!Serial); // Wait for serial over USB
+  
   setup_radio();
+
 }
 
 void loop() {
@@ -69,7 +81,7 @@ void loop() {
     Serial.println(" millis");
   }
 
-  delay(500);
+  delay(10);
 }
 
 #define MAX_PACKET_SIZE 32 // maximum packet size for radio
@@ -80,7 +92,6 @@ void setup_radio() {
   }
   
   SPI.begin();
-  SPI.beginTransaction(SPISettings(10000000, MSBFIRST, SPI_MODE0));
 
   while(!radio.isChipConnected()) {
     Serial.println("Can't talk to radio via SPI");
@@ -89,7 +100,7 @@ void setup_radio() {
 
   while (!radio.begin(&SPI)) {
     Serial.println("Radio hardware did not initialize");
-    delay(200);
+    while(1) {};
   }
 
   radio.setAutoAck(true);

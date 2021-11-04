@@ -14,8 +14,12 @@
 #include "printf.h"
 #include "RF24.h"
 
+const unsigned int ADC_1_CS = A3;
+const unsigned int ADC_2_CS = A2;
+
 // instantiate an object for the nRF24L01 transceiver
-RF24 radio(0, A4); // using pin D0 (TX) for the CE pin, and pin A4 for the CSN pin
+RF24 radio(0, A4, 1000000); // using pin D0 (TX) for the CE pin, and pin A4 for the CSN pin
+// Use 1 Mhz, 10 MHz is too fast (based on oscilloscope)
 
 // Let these addresses be used for the pair
 uint8_t address[][6] = {"pc", "mouse"};
@@ -39,6 +43,12 @@ void makePayload(uint8_t); // prototype to construct a payload dynamically
 
 
 void setup() {
+
+  pinMode(ADC_1_CS, OUTPUT);
+  pinMode(ADC_2_CS, OUTPUT);
+
+  digitalWrite(ADC_1_CS, HIGH); // Without this the ADC's write
+  digitalWrite(ADC_2_CS, HIGH); // to the SPI bus while the nRF24 is!!!!
 
   buffer[SIZE] = 0;        // add a NULL terminating character (for easy printing)
 
