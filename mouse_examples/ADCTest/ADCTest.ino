@@ -6,8 +6,14 @@ Adafruit_MCP3008 adc2;
 const unsigned int ADC_1_CS = A3;
 const unsigned int ADC_2_CS = A2;
 
+const unsigned int RF_CS = A4;
+
 void setup() {
   Serial.begin(115200);
+
+  pinMode(RF_CS, OUTPUT);
+  digitalWrite(RF_CS, HIGH); // Without this the nRF24 will write to the SPI bus
+                             // while the ADC's are also talking
 
   adc1.begin(ADC_1_CS);  
   adc2.begin(ADC_2_CS);  
