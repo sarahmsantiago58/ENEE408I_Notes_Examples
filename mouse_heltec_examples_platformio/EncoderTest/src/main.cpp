@@ -33,6 +33,6 @@ void loop() {
     Serial.print("\t");
     Serial.print(enc2_value);
     Serial.println();
-    //delay(10); //If you add this delay it sometimes misses encoder ticks on enc2 even though interrupts are used....
+    delay(10); // Delay works now that interrupts are fixed
   }
 }
