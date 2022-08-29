@@ -7,6 +7,9 @@
 
 Adafruit_MPU6050 mpu;
 
+const unsigned int ADC_1_CS = 2;
+const unsigned int ADC_2_CS = 17;
+
 void setup(void) {
   // Stop the right motor by setting pin 14 low
   // this pin floats high or is pulled
@@ -20,6 +23,12 @@ void setup(void) {
     delay(10); // will pause Zero, Leonardo, etc until serial console opens
 
   Serial.println("Adafruit MPU6050 test!");
+
+  pinMode(ADC_1_CS, OUTPUT);
+  pinMode(ADC_2_CS, OUTPUT);
+
+  digitalWrite(ADC_1_CS, HIGH); // Without this the ADC's write
+  digitalWrite(ADC_2_CS, HIGH); // to the SPI bus while the nRF24 is!!!!
 
   // Try to initialize!
   if (!mpu.begin()) {
