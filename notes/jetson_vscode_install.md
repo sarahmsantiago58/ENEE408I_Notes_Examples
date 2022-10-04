@@ -14,13 +14,13 @@ When selecting your version, make sure to select the ARM 64 binary next to ".deb
 
 After your download has completed, open your terminal and use the following commands to install your package:
 
-`sudo dpkg -i enter_path_to_your_package_here`
+1. `sudo dpkg -i enter_path_to_your_package_here`
 
-`sudo apt install apt-transport-https`
+2. `sudo apt install apt-transport-https`
 
-`sudo apt update`
+3. `sudo apt update`
 
-`sudo apt install code`
+4. `sudo apt install code`
 
 To check if VSCode has installed successfully use `code --version`.
 
