@@ -2,7 +2,7 @@
 
 ### Before Proceeding:
 
-This guide assumes that your Jetson has been flashed to Jetpack 5.0.2, see [here](https://developer.nvidia.com/embedded/jetpack) for more details. If you or Levi recently flashed your Jetson this should be the case.
+This guide assumes that your Jetson has been flashed to Jetpack 5.0.2, see [here](https://developer.nvidia.com/embedded/jetpack) for more details. If you or Levi recently flashed your Jetson, as of 10/3/22, this should be the case.
 
 There probably exists a faster way to install VSCode onto your Jetson but think of this guide as a proven method you can always come back to! 
 
