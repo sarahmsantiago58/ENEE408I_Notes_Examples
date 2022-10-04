@@ -26,7 +26,7 @@ To check if VSCode has installed successfully use `code --version`.
 
 TIPS: 
 1. If you ever want to know your current path use the `pwd` command.
-2. To copy or paste in command line use Ctrl+Shift+C or Ctrl+Shift+V, respectively.
+2. To copy or paste in the terminal use Ctrl+Shift+C or Ctrl+Shift+V, respectively.
 
 ### Step 3: Run VSCode 
 
