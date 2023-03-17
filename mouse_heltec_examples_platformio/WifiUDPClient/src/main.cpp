@@ -79,9 +79,18 @@ void loop(){
     udp.beginPacket(udpAddress,udpPort);
     udp.printf("Seconds since boot: %lu", millis()/1000);
     udp.endPacket();
+
+    //Checks for packet and obtains its contents
+    int packetSize = udp.parsePacket();
+    if(packetSize >= sizeof(float))
+    {
+      float x[2];
+      udp.read((char*)x, sizeof(x)); 
+      udp.flush();
+      Serial.printf("x is %f %f\n", x[0], x[1]);
+    }
   }
-  //Wait for 1 second
-  delay(1000);
+  delay(100);
 }
 
 
